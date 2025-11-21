@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Rest Cat - Preview</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+        /* Override fixed position for preview if needed, but fixed is good to show how it covers screen */
+    </style>
+</head>
+<body>
+    <h1>This is a preview page</h1>
+    <p>This page simulates what happens when the timer goes off.</p>
+    <p>The overlay below covers the entire screen.</p>
+
+    <!-- This simulates the HTML injected by content.js -->
+    <div id="eye-rest-overlay">
+        <!-- Note: In the real extension, we use chrome.runtime.getURL, here we use relative path -->
+        <img src="images/cat.png" id="eye-rest-cat" alt="Cat">
+        <div id="eye-rest-message">Time to rest your eyes! 😺</div>
+        <div id="eye-rest-timer">60</div>
+        <button id="eye-rest-close" onclick="document.getElementById('eye-rest-overlay').style.display='none'">I'm good, dismiss</button>
+    </div>
+
+    <script>
+        // Simple countdown for the preview
+        let count = 60;
+        setInterval(() => {
+            if(count > 0) {
+                count--;
+                document.getElementById('eye-rest-timer').innerText = count;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
